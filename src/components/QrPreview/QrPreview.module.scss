@@ -1,0 +1,62 @@
+.card {
+  min-width: 0;
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 1rem;
+  background: var(--surface-preview-gradient);
+}
+
+.header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text-accent);
+  margin-bottom: 0.9rem;
+
+  h2 {
+    margin: 0;
+    font-size: 0.98rem;
+    letter-spacing: -0.01em;
+  }
+}
+
+.previewArea {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.1rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  background: var(--surface-preview-inner);
+}
+
+.qrCanvas {
+  width: min(var(--qr-size, 320px), 100%);
+  max-width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  box-shadow: var(--shadow-canvas);
+  overflow: hidden;
+
+  :global(svg),
+  :global(canvas) {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+  }
+}
+
+@media (max-width: 560px) {
+  .card {
+    padding: 0.8rem;
+  }
+
+  .previewArea {
+    padding: 0.65rem;
+  }
+}

@@ -1,0 +1,38 @@
+.card {
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 1rem;
+  background: var(--surface-box-gradient);
+}
+
+.header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text-accent);
+  margin-bottom: 0.72rem;
+
+  h2 {
+    margin: 0;
+    font-size: 0.98rem;
+    letter-spacing: -0.01em;
+  }
+}
+
+.textarea {
+  width: 100%;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  padding: 0.72rem 0.8rem;
+  resize: vertical;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}

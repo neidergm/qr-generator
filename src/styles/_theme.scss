@@ -1,0 +1,79 @@
+$theme-light: (
+  bg-shell-start: #f4f6ff,
+  bg-shell-end: #f7fbff,
+  bg-bubble-warm: rgb(255 207 166 / 65%),
+  bg-bubble-cold: rgb(176 224 255 / 55%),
+  surface-card: rgb(255 255 255 / 84%),
+  surface-panel-gradient: linear-gradient(160deg, rgb(255 255 255 / 96%), rgb(246 250 255 / 94%)),
+  surface-box-gradient: linear-gradient(170deg, rgb(255 255 255 / 95%), rgb(245 250 255 / 95%)),
+  surface-preview-gradient: linear-gradient(160deg, rgb(255 255 255 / 94%), rgb(239 247 255 / 94%)),
+  surface-preview-inner: linear-gradient(135deg, rgb(251 252 255 / 90%), rgb(240 245 255 / 92%)),
+  surface-elevated: #fff,
+  surface-segmented: #ebf3ff,
+  surface-menu: #fff,
+  surface-button-end: #f2f7ff,
+  border-soft: rgb(18 37 62 / 12%),
+  border-strong: rgb(16 46 80 / 18%),
+  border-subtle: rgb(16 46 80 / 8%),
+  text-primary: #1f3451,
+  text-muted: #3a5579,
+  text-accent: #1c3f69,
+  text-accent-strong: #12274e,
+  interactive-accent: #2d7dff,
+  focus-ring: rgb(45 125 255 / 16%),
+  shadow-card: (
+    0 28px 52px rgb(24 43 69 / 14%),
+    inset 0 1px 0 rgb(255 255 255 / 75%)
+  ),
+  shadow-soft: 0 8px 18px rgb(16 45 82 / 12%),
+  shadow-button-active: 0 4px 10px rgb(13 47 87 / 14%),
+  shadow-menu: 0 16px 28px rgb(19 47 80 / 16%),
+  shadow-canvas: 0 18px 28px rgb(20 45 80 / 14%)
+);
+
+$theme-dark: (
+  bg-shell-start: #0f1726,
+  bg-shell-end: #111f31,
+  bg-bubble-warm: rgb(255 137 76 / 24%),
+  bg-bubble-cold: rgb(86 166 255 / 23%),
+  surface-card: rgb(17 28 44 / 84%),
+  surface-panel-gradient: linear-gradient(160deg, rgb(22 36 56 / 96%), rgb(18 31 49 / 94%)),
+  surface-box-gradient: linear-gradient(170deg, rgb(21 35 53 / 95%), rgb(18 30 48 / 95%)),
+  surface-preview-gradient: linear-gradient(160deg, rgb(22 36 56 / 94%), rgb(16 27 43 / 94%)),
+  surface-preview-inner: linear-gradient(135deg, rgb(28 44 68 / 90%), rgb(18 31 48 / 92%)),
+  surface-elevated: #15253b,
+  surface-segmented: #11263d,
+  surface-menu: #122235,
+  surface-button-end: #182c43,
+  border-soft: rgb(153 183 219 / 18%),
+  border-strong: rgb(167 196 231 / 30%),
+  border-subtle: rgb(167 196 231 / 18%),
+  text-primary: #e3edf9,
+  text-muted: #acc2dd,
+  text-accent: #d5e5fb,
+  text-accent-strong: #f0f6ff,
+  interactive-accent: #7eb2ff,
+  focus-ring: rgb(126 178 255 / 26%),
+  shadow-card: (
+    0 26px 48px rgb(2 8 18 / 40%),
+    inset 0 1px 0 rgb(255 255 255 / 6%)
+  ),
+  shadow-soft: 0 8px 18px rgb(2 8 18 / 34%),
+  shadow-button-active: 0 6px 14px rgb(2 8 18 / 38%),
+  shadow-menu: 0 16px 28px rgb(2 8 18 / 42%),
+  shadow-canvas: 0 18px 28px rgb(2 8 18 / 38%)
+);
+
+@mixin apply-theme($tokens) {
+  @each $name, $value in $tokens {
+    --#{$name}: #{$value};
+  }
+}
+
+@mixin light-theme {
+  @include apply-theme($theme-light);
+}
+
+@mixin dark-theme {
+  @include apply-theme($theme-dark);
+}

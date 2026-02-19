@@ -1,0 +1,56 @@
+.root {
+  position: relative;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.48rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  padding: 0.62rem 0.84rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-accent-strong);
+  background: linear-gradient(180deg, var(--surface-elevated), var(--surface-button-end));
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+}
+
+.trigger:disabled {
+  opacity: 0.78;
+  cursor: default;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.55rem);
+  z-index: 3;
+  min-width: 140px;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  background: var(--surface-menu);
+  box-shadow: var(--shadow-menu);
+  overflow: hidden;
+}
+
+.option {
+  width: 100%;
+  border: 0;
+  text-align: left;
+  padding: 0.64rem 0.78rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: transparent;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: var(--surface-segmented);
+}
