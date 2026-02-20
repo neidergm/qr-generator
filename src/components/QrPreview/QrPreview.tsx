@@ -113,21 +113,24 @@ export function QrPreview({ qrCodeRef }: QrPreviewProps) {
 
   return (
     <section className={styles.card}>
-      <div className={styles.header}>
-        <QrCode size={16} />
-        <h2>Previsualizacion</h2>
-      </div>
-      
-      <QualityAndSize />
-      <br/>
+      <div className={styles.controlsPanel}>
+        <div className={styles.header}>
+          <QrCode size={16} />
+          <h2>Previsualizacion</h2>
+        </div>
 
-      <div className={styles.previewArea}>
-        <div
-          className={styles.qrCanvas}
-          style={canvasStyles}
-          ref={previewContainerRef}
-          aria-label="Vista previa QR"
-        />
+        <QualityAndSize />
+      </div>
+
+      <div className={styles.stickyPreview}>
+        <div className={styles.previewArea}>
+          <div
+            className={styles.qrCanvas}
+            style={canvasStyles}
+            ref={previewContainerRef}
+            aria-label="Vista previa QR"
+          />
+        </div>
       </div>
 
     </section>

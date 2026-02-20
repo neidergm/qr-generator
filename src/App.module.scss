@@ -82,6 +82,10 @@
   .content {
     grid-template-columns: 1fr;
   }
+
+  .leftColumn {
+    display: contents;
+  }
 }
 
 @media (max-width: 640px) {
