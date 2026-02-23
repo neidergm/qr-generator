@@ -1,17 +1,16 @@
-import { useEffect, useRef, type CSSProperties, type RefObject } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import QRCodeStyling from 'qr-code-styling';
 import { QrCode } from 'lucide-react';
+import { useQrInstanceStore } from '@/store/useQrInstanceStore';
 import { useQrStore } from '@/store/useQrStore';
 import { buildQrOptions } from '@/utils/qrOptions';
 import styles from '@/components/QrPreview/QrPreview.module.scss';
 import QualityAndSize from '../SettingsPanel/QualityAndSize';
 
-interface QrPreviewProps {
-  qrCodeRef: RefObject<QRCodeStyling | null>;
-}
-
-export function QrPreview({ qrCodeRef }: QrPreviewProps) {
+export function QrPreview() {
   const previewContainerRef = useRef<HTMLDivElement>(null);
+  const qrInstance = useQrInstanceStore((state) => state.qrInstance);
+  const setQrInstance = useQrInstanceStore((state) => state.setQrInstance);
 
   const {
     data,
@@ -35,35 +34,38 @@ export function QrPreview({ qrCodeRef }: QrPreviewProps) {
   } = useQrStore();
 
   useEffect(() => {
-    if (!previewContainerRef.current) {
+    const previewContainer = previewContainerRef.current;
+
+    if (!previewContainer) {
       return;
     }
 
-    if (!qrCodeRef.current) {
-      qrCodeRef.current = new QRCodeStyling({
+    let currentQr = qrInstance;
+
+    if (!currentQr) {
+      currentQr = new QRCodeStyling({
         width: qrSize,
         height: qrSize,
         type: 'svg',
         margin: 0,
       });
+      setQrInstance(currentQr);
     }
 
-    previewContainerRef.current.innerHTML = '';
-    qrCodeRef.current.append(previewContainerRef.current);
+    previewContainer.innerHTML = '';
+    currentQr.append(previewContainer);
 
     return () => {
-      if (previewContainerRef.current) {
-        previewContainerRef.current.innerHTML = '';
-      }
+      previewContainer.innerHTML = '';
     };
-  }, [qrCodeRef, qrSize]);
+  }, [qrInstance, qrSize, setQrInstance]);
 
   useEffect(() => {
-    if (!qrCodeRef.current) {
+    if (!qrInstance) {
       return;
     }
 
-    qrCodeRef.current.update(
+    qrInstance.update(
       buildQrOptions({
         data,
         qrQuality,
@@ -103,7 +105,7 @@ export function QrPreview({ qrCodeRef }: QrPreviewProps) {
     logoDataUrl,
     qrQuality,
     qrSize,
-    qrCodeRef,
+    qrInstance,
     solidColor,
   ]);
 

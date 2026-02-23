@@ -2,10 +2,8 @@ import type { CornerDotType, CornerSquareType, DotType, ErrorCorrectionLevel } f
 
 export type ExportFormat = 'svg' | 'png' | 'jpeg';
 export type PatternColorMode = 'solid' | 'gradient';
-export type ThemeMode = 'light' | 'dark';
 
 export interface QrConfig {
-  themeMode: ThemeMode;
   qrQuality: ErrorCorrectionLevel;
   qrSize: number;
   data: string;

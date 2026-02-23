@@ -11,12 +11,10 @@ const QUALITY_OPTIONS: Array<{ value: ErrorCorrectionLevel; label: string }> = [
 
 const QualityAndSize = () => {
 
-    const {
-        qrQuality,
-        setQrQuality,
-        qrSize,
-        setQrSize,
-    } = useQrStore()
+    const qrQuality = useQrStore((state) => state.qrQuality);
+    const qrSize = useQrStore((state) => state.qrSize);
+    const setQrQuality = useQrStore((state) => state.setQrQuality)
+    const setQrSize = useQrStore((state) => state.setQrSize);
 
     return (
         <div className={styles.qrMetaControls}>

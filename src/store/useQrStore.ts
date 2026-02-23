@@ -1,9 +1,8 @@
 import { create } from 'zustand';
 import type { CornerDotType, CornerSquareType, DotType, ErrorCorrectionLevel } from 'qr-code-styling';
-import type { PatternColorMode, QrConfig, ThemeMode } from '@/types/qr';
+import type { PatternColorMode, QrConfig } from '@/types/qr';
 
 interface QrStore extends QrConfig {
-  setThemeMode: (themeMode: ThemeMode) => void;
   setQrQuality: (qrQuality: ErrorCorrectionLevel) => void;
   setQrSize: (qrSize: number) => void;
   setData: (data: string) => void;
@@ -21,7 +20,6 @@ interface QrStore extends QrConfig {
 }
 
 const initialState: QrConfig = {
-  themeMode: 'light',
   qrQuality: 'Q',
   qrSize: 320,
   data: 'https://example.com',
@@ -42,9 +40,8 @@ const initialState: QrConfig = {
   logoDataUrl: null,
 };
 
-export const useQrStore = create<QrStore>((set) => ({
+export const useQrStore = create<QrStore>()((set) => ({
   ...initialState,
-  setThemeMode: (themeMode) => set({ themeMode }),
   setQrQuality: (qrQuality) => set({ qrQuality }),
   setQrSize: (qrSize) => set({ qrSize: Math.min(640, Math.max(180, qrSize)) }),
   setData: (data) => set({ data }),

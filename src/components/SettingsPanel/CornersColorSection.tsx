@@ -5,14 +5,11 @@ import { SettingsSection } from '@/components/SettingsPanel/SettingsSection';
 
 export function CornersColorSection() {
 
-  const {
-    cornerColorMode,
-    cornerSolidColor,
-    cornerGradientStart,
-    cornerGradientEnd,
-    cornerGradientRotation
-  } = useQrStore()
-
+ const cornerColorMode = useQrStore((state) => state.cornerColorMode);
+  const cornerSolidColor = useQrStore((state) => state.cornerSolidColor);
+  const cornerGradientStart = useQrStore((state) => state.cornerGradientStart);
+  const cornerGradientEnd = useQrStore((state) => state.cornerGradientEnd);
+  const cornerGradientRotation = useQrStore((state) => state.cornerGradientRotation);
 
   const {
     setColorMode,
@@ -41,11 +38,11 @@ export function CornersColorSection() {
 
       {cornerColorMode === 'solid' ? (
         <>
-          <label className={styles.label} htmlFor="solid-color">
+          <label className={styles.label} htmlFor="c-solid-color">
             Color
           </label>
           <input
-            id="solid-color"
+            id="c-solid-color"
             type="color"
             className={styles.colorInput}
             value={cornerSolidColor}
@@ -55,11 +52,11 @@ export function CornersColorSection() {
       ) : (<>
         <div className={styles.colorGroup}>
           <div>
-            <label className={styles.label} htmlFor="gradient-start">
+            <label className={styles.label} htmlFor="c-gradient-start">
               Color inicial
             </label>
             <input
-              id="gradient-start"
+              id="c-gradient-start"
               type="color"
               className={styles.colorInput}
               value={cornerGradientStart}
@@ -68,11 +65,11 @@ export function CornersColorSection() {
           </div>
 
           <div>
-            <label className={styles.label} htmlFor="gradient-end">
+            <label className={styles.label} htmlFor="c-gradient-end">
               Color final
             </label>
             <input
-              id="gradient-end"
+              id="c-gradient-end"
               type="color"
               className={styles.colorInput}
               value={cornerGradientEnd}
@@ -81,11 +78,11 @@ export function CornersColorSection() {
           </div>
         </div>
         
-        <label className={styles.label} htmlFor="gradient-rotation">
+        <label className={styles.label} htmlFor="c-gradient-rotation">
           Rotacion: {cornerGradientRotation}deg
         </label>
         <input
-          id="gradient-rotation"
+          id="c-gradient-rotation"
           type="range"
           min={0}
           max={360}
